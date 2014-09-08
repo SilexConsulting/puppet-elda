@@ -99,14 +99,4 @@ class elda::install(){
     require => File["${::elda::params::install_path}"],
   }
 
-  #Temp need to add to tomcat webapps instead of standalone.
-  # run java -jar start.jar in install_path
-  # forward port vm:8080 to local:8883
-  # browse to http://localhost:8883/standalone/hello/games
-  #exec { 'start-jar':
-  #  path      => ['/usr/bin', '/usr/sbin', '/bin'],
-  #  command   => "java -jar ${::elda::params::install_path}/start.jar",
-  #  onlyif    => "test -f ${::elda::params::install_path}/start.jar",
-  #}
-
 }

@@ -32,7 +32,7 @@ class elda::install(){
   }
 
   #Ensure the Install directory is created according to install_path parameter
-  file { $::elda::params::log_path:
+  file { $::elda::params::install_path:
     ensure    => directory,
     recurse   => true,
     purge     => true,
@@ -47,18 +47,6 @@ class elda::install(){
     ensure => 'link',
     force  => true,
     target => $::elda::params::log_path,
-  }
-
-
-  #Ensure the Install directory is created according to install_path parameter
-  file { $::elda::params::install_path:
-    ensure    => directory,
-    recurse   => true,
-    purge     => true,
-    force     => true,
-    owner     => $::elda::params::owner,
-    group     => $::elda::params::group,
-    mode      => 766,
   }
 
   #Download the Elda API front end archive.

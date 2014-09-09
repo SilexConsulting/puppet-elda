@@ -1,8 +1,8 @@
-# elda #
+# E.L.D.A. Puppet module #
 
-This is the elda module. It provides an Elda API front end using a Tomcat server.
+This module provides a front end for elda using a Tomcat server.
 
-Actions: DOWNLOAD & MOVE Elda war file to tomcat web apps directory using url $host:8080/organogram
+Actions: Downloads war file to tomcat web apps directory at this url -> $host:8080/organogram
 
 Requires: Tomcat server
 
@@ -10,4 +10,4 @@ Sample usage:
 
 include elda
 
-puppet apply --modulpath=/path/to -e "include elda"
+puppet apply --modulepath=/path/to -e "include elda"

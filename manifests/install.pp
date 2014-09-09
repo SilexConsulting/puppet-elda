@@ -2,15 +2,16 @@
 #
 # This module manages elda deployment
 #
-# Actions: DOWNLOAD & MOVE Elda war file to tomcat web apps directory.
+# Actions: DOWNLOAD & MOVE Elda war file to tomcat web apps directory using url $host:8080/organogram
 #
-# Requires Tomcat Server
+# Requires Tomcat server
 #
 # Sample usage:
+#
+# include elda
 # puppet apply --modulpath=/path/to -e "include elda"
-class elda::install(){
-
-  include elda::params
+#
+class elda::install inherits elda::params {
 
   #Update the package manager
   exec { 'system-update':

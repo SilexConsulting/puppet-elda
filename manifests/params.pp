@@ -1,14 +1,6 @@
 # Class: elda::params
 #
-# This module manages elda parameters
-#
-# Parameters: none
-#
-# Actions:
-#
-# Requires: see Modulefile
-#
-# Sample Usage:
+# This module manages elda parameters which are inherited by the install class.
 #
 class elda::params (
   $tomcat_service = 'tomcat7',

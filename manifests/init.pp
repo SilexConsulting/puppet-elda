@@ -1,4 +1,4 @@
-# Class: elda
+# == Class: elda
 #
 # This module manages elda
 #
@@ -11,6 +11,8 @@
 # Sample Usage:
 #
 class elda inherits elda::params {
-class{'elda::config':}
-
+  class {'elda::install': } ->
+  class {'elda::config': } ~>
+  Service['tomcat7'] ->
+  Class['elda']
 }

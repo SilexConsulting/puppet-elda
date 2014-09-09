@@ -16,7 +16,7 @@ class elda::config {
   $elda_source = "${elda::params::download_url}${elda::params::elda_package_name}"
 
   # Download and install the Elda API front end WAR file into the tomcat webapps directory
-  exec { 'elda-install':
+  exec { 'elda-download':
     path      => ['/usr/bin', '/usr/sbin', '/bin'],
     command   => "wget ${elda_source}",
     cwd       => $elda::params::tomcat_webapps_path,

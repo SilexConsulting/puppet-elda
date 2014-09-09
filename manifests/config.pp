@@ -11,20 +11,16 @@
 # include elda
 # puppet apply --modulepath=/path/to -e "include elda"
 #
-class elda::config inherits elda::params {
+class elda::config {
 
-  #Include Tomcat module.
-  include tomcat
+  $elda_source = "${elda::params::download_url}${elda::params::elda_package_name}"
 
-  #Download the Elda API front end war file into the tomcat webapps directory.
-  exec { "download-elda":
-    command   => "curl -4sv ${::elda::params::download_url}${::elda::params::elda_package_name} > ${::elda::params::tomcat_webapps_path}/${::elda::params::elda_package_name}",
-    path      => '/usr/bin',
-    cwd       => $::elda::params::tomcat_webapps_path,
-    onlyif    => "test ! -f ${::elda::params::tomcat_webapps_path}/${::elda::params::elda_package_name}",
-    require   => Exec['system-update'],
-    notify    => Service["tomcat7"],
+  # Download and install the Elda API front end WAR file into the tomcat webapps directory
+  exec { 'elda-install':
+    path      => ['/usr/bin', '/usr/sbin', '/bin'],
+    command   => "wget ${elda_source}",
+    cwd       => $elda::params::tomcat_webapps_path,
+    creates   => "${elda::params::tomcat_webapps_path}/${elda::params::elda_package_name}",
+    timeout   => 0,
   }
-
-
 }

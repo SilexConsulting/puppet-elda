@@ -1,4 +1,4 @@
-# Class: elda::install
+# Class: elda::config
 #
 # This module manages elda deployment
 #
@@ -9,15 +9,9 @@
 # Sample usage:
 #
 # include elda
-# puppet apply --modulpath=/path/to -e "include elda"
+# puppet apply --modulepath=/path/to -e "include elda"
 #
-class elda::install inherits elda::params {
-
-  #Update the package manager
-  exec { 'system-update':
-    path      => ['/usr/bin', '/usr/sbin', '/bin'],
-    command   => "apt-get update",
-  }
+class elda::config inherits elda::params {
 
   #Include Tomcat module.
   include tomcat

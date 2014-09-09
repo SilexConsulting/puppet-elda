@@ -11,7 +11,6 @@
 # Sample Usage:
 #
 class elda inherits elda::params {
-class{'elda::install':}
-
+class{'elda::config':}
 
 }

@@ -10,7 +10,9 @@
 #
 # Sample Usage:
 #
-class elda inherits elda::params {
+class elda (
+  $elda_source   = $elda::params::elda_source
+) inherits elda::params {
   class {'elda::install': } ->
   class {'elda::config': } ~>
   Service['tomcat7'] ->

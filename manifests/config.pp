@@ -13,14 +13,14 @@
 #
 class elda::config {
 
-  $elda_source = "${elda::params::download_url}${elda::params::elda_package_name}"
+  $source_parts = split($elda::elda_source, '/')
 
   # Download the Elda API front end WAR file into the tomcat webapps directory
   exec { 'elda-download':
     path      => ['/usr/bin', '/usr/sbin', '/bin'],
-    command   => "wget ${elda_source}",
+    command   => "wget ${elda::elda_source}",
     cwd       => $elda::params::tomcat_webapps_path,
-    creates   => "${elda::params::tomcat_webapps_path}/${elda::params::elda_package_name}",
+    creates   => "${elda::params::tomcat_webapps_path}/${source_parts[-1]}",
     timeout   => 0,
   }
 }

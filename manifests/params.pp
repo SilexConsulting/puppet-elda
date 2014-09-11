@@ -3,6 +3,8 @@
 # This module manages elda parameters which are inherited by the install class.
 #
 class elda::params {
+  include tomcat::params
+
   $tomcat_service               = $tomcat::params::service_name
   $tomcat_package               = $tomcat::params::package_name
 

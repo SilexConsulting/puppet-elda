@@ -15,6 +15,6 @@ class elda (
 ) inherits elda::params {
   class {'elda::install': } ->
   class {'elda::config': } ~>
-  Service['tomcat7'] ->
+  Service[$elda::params::tomcat_service] ->
   Class['elda']
 }
